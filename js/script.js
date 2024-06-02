@@ -46,20 +46,31 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function dragStart(event) {
-        event.target.classList.add('dragging');
-        event.dataTransfer.effectAllowed = 'move';
-        setTimeout(() => event.target.classList.add('hide'), 0);
+        const target = event.target;
+        if (event.type === 'touchstart') {
+            touchStartX = event.touches[0].clientX - target.getBoundingClientRect().left;
+            touchStartY = event.touches[0].clientY - target.getBoundingClientRect().top;
+        } else {
+            target.classList.add('dragging');
+            event.dataTransfer.effectAllowed = 'move';
+            setTimeout(() => target.classList.add('hide'), 0);
+        }
     }
-
+    
     function dragEnd(event) {
-        event.target.classList.remove('dragging', 'hide');
-        saveTasks();
+        const target = event.target;
+        if (event.type === 'touchend') {
+            target.classList.remove('dragging', 'hide');
+        } else {
+            target.classList.remove('dragging', 'hide');
+            saveTasks();
+        }
     }
-
+    
     function dragOver(event) {
         event.preventDefault();
     }
-
+    
     function drop(event) {
         event.preventDefault();
         const draggingElement = document.querySelector('.dragging');
@@ -67,8 +78,24 @@ document.addEventListener('DOMContentLoaded', () => {
         if (targetList && (targetList.id === 'todo' || targetList.id === 'done')) {
             targetList.appendChild(draggingElement);
         }
+        if (event.type === 'touchend') {
+            draggingElement.classList.remove('dragging', 'hide');
+        }
         saveTasks();
     }
+    
+    function touchMove(event) {
+        const target = event.target;
+        if (target.classList.contains('dragging')) {
+            const touch = event.touches[0];
+            const offsetX = touch.clientX - touchStartX;
+            const offsetY = touch.clientY - touchStartY;
+            target.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+        }
+    }
+    
+    todoList.addEventListener('touchmove', touchMove);
+    doneList.addEventListener('touchmove', touchMove);
 
     function saveTasks() {
         const workspace = workspaceSelect.value;
