@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: url('../assets/background.png'); /* Update to the correct URL */
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Noto Sans', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background: rgba(102, 102, 102, 0.305);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 800px;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: #101010;
+}
+
+.input-container {
+    height: 21px;
+    width: 250px;
+    font-size: 15px;
+    color: #999;
+    padding-left: 5px;
+    vertical-align: bottom;
+    margin-bottom: 20px;
+}
+
+#taskInput {
+    padding: 10px;
+    width: 70%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+.add {
+    padding: 10px 20px;
+    border: none;
+    background-color: #b700e9;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    position: absolute;
+}
+.add:hover {
+    background-color: #f700ff;
+}
+
+.add-workspace
+{
+    cursor: pointer;
+    background-color: #cc00ff;
+    color: white;
+    border: none;
+    margin-right: 20px;
+}
+
+.add-workspace:hover
+{
+    background-color: #30006f;
+}
+
+.remove
+{
+    background: #ea0000;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.remove:hover
+{
+    background: #990000;
+
+}
+
+.list-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.todo-list, .done-list {
+    background-color: rgb(27, 27, 27);
+    color: white;
+    padding: 20px;
+    width: 45%;
+    border-radius: 8px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+    background: #000;
+    color: white;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: grab;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s;
+}
+
+li.dragging {
+    background: #555; /* This will make sure the background remains visible */
+    opacity: 1 !important; /* Ensure it doesn't get translucent */
+    border: 2px dashed #aaa; /* Add a border similar to Trello */
+}
+
+li.hide {
+    display: none;
+}
+
+
+.delete-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
+}
+
+.workspace-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.workspace-container select {
+    flex-grow: 1;
+    margin-right: 10px;
+    padding: 5px;
+}
+
+.workspace-container button {
+    padding: 5px 10px;
+}
+
+.workspace-list {
+    margin-bottom: 20px;
+}
+
+.workspace-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+    background-color: #eee;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+.workspace-delete-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.workspace-delete-btn:hover {
+    background-color: #c82333;
+}
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .list-container {
+        flex-direction: column;
+    }
+
+    .todo-list, .done-list {
+        width: 100%;
+    }
+
+    .input-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #taskInput {
+        width: 100%;
+        margin-bottom: 10px;
+        margin-right: 0;
+    }
+}
