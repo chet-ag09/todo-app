@@ -3,15 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To-Do List App</title>
+    <title>TODOIT - Keep track!</title>
     <link rel="stylesheet" href="styles/style.css">
+    <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
 </head>
 <body>
     <div class="container">
-        <h1>To-Do List App</h1>
+
+        <h1>TODO-IT!</h1>
         <div class="workspace-container">
             <select id="workspaceSelect"></select>
             <button onclick="createWorkspace()" class="add-workspace">+</button>
+        </div>
+
+        <div class="bg-container">
+            <label for="backgroundSelect">Select Wallpaper: </label>
+            <select id="backgroundSelect">
+                <option value="bg1">Pink Mountains</option>
+                <option value="bg2">Pine Groves</option>
+                <option value="bg3">Abstract Mountains</option>
+                <option value="bg4">Moony Night</option>
+            </select>
         </div>
 
         <div class="list-container">
@@ -26,11 +38,19 @@
             <div class="done-list">
                 <h2>Done</h2>
                 <ul id="done">
-                    <p class="placeholder">Drag and Drop Tasks Here that are done!</p>
+                    <p class="placeholder"></p>
                 </ul>
             </div>
         </div>
+
+        <div class="note-container">
+            <textarea id="noteInput" placeholder="Write your note here"></textarea><br>
+            <button onclick="saveNote()" class="add-btn">+</button>
+            <button onclick="deleteNote()" class="remove-btn">-</button>
+        </div>
+
     </div>
+
     <script src="js/script.js"></script>
 </body>
 </html>
