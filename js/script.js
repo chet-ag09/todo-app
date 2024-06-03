@@ -2,14 +2,32 @@ document.addEventListener('DOMContentLoaded', () => {
     const todoList = document.getElementById('todo');
     const doneList = document.getElementById('done');
     const workspaceSelect = document.getElementById('workspaceSelect');
+    const backgroundSelect = document.getElementById('backgroundSelect');
 
     loadWorkspaces();
+    loadNote();
+    loadBackground();
 
+    backgroundSelect.addEventListener('change', updateBackground);
+
+    function updateBackground() {
+        const selectedBackground = backgroundSelect.value;
+        document.body.className = selectedBackground;
+        localStorage.setItem('selectedBackground', selectedBackground);
+    }
+
+    function loadBackground() {
+        const savedBackground = localStorage.getItem('selectedBackground');
+        if (savedBackground) {
+            backgroundSelect.value = savedBackground;
+            document.body.className = savedBackground;
+        }
+    }
     
 
     function updateTitle(workspaceName) {
         const titleElement = document.querySelector('h1');
-        titleElement.textContent = `To-Do List App - ${workspaceName}`;
+        titleElement.textContent = `TODOIT - ${workspaceName}`;
     }
 
     function addTask() {
@@ -124,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Check if the done list is empty before appending the placeholder
         if (dones.length === 0) {
             const placeholder = document.createElement('p');
-            placeholder.textContent = "Put tasks that are done here";
+            placeholder.textContent = "Drag and drop tasks here that are done!";
             placeholder.classList.add('placeholder');
             doneList.appendChild(placeholder);
         }
@@ -215,5 +233,40 @@ document.addEventListener('DOMContentLoaded', () => {
         list.addEventListener('drop', drop);
     });
 
+
+    const noteInput = document.getElementById('noteInput');
+    const noteContainer = document.querySelector('.note-container');
     
-});
+        // Load note from local storage when the page loads
+        loadNote();
+    
+        // Assign saveNote function to the button's onclick event
+        const saveButton = document.getElementById('saveButton');
+        saveButton.onclick = saveNote;
+    });
+    
+    function loadNote() {
+        const savedNote = localStorage.getItem('note');
+        if (savedNote) {
+            noteInput.value = savedNote;
+        }
+    }
+    
+    function saveNote() {
+        const noteText = noteInput.value.trim();
+        if (noteText !== '') {
+            localStorage.setItem('note', noteText);
+            alert('Note saved successfully!');
+        } else {
+            alert('Please enter a note before saving.');
+        }
+    }
+    
+    function deleteNote() {
+        const confirmation = confirm('Are you sure you want to delete the note?');
+        if (confirmation) {
+            localStorage.removeItem('note');
+            noteInput.value = '';
+            alert('Note deleted successfully!');
+        }
+    }
