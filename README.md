@@ -5,7 +5,7 @@ TODOIT is a simple To Do web app that uses HTML, CSS and JS to operate. I used l
 
 ## Features
 The app has the following main features
-1. Drag and Drop of Tasks from to-do to done(important obvi).
+1. Drag and Drop of Tasks from to-do to doing to done(important obvi).
 2. Wallpaper changing - the app provides users with four wallpaper choices currently.
 3. Notes Feature - The users can leave themselves notes to rememeber stuff or etc.
 4. Workspaces - The app has workspaces that users can commit for particular things.
