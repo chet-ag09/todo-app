@@ -129,7 +129,7 @@ h1 {
     flex-wrap: wrap;
 }
 
-.todo-list, .done-list {
+.todo-list, .done-list, .doing-list {
     background-color: rgb(27, 27, 27);
     color: white;
     padding: 20px;
