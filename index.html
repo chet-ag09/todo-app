@@ -9,7 +9,6 @@
 </head>
 <body>
     <div class="container">
-
         <h1>TODO-IT!</h1>
         <div class="workspace-container">
             <select id="workspaceSelect"></select>
@@ -35,10 +34,16 @@
                     <button onclick="addTask()" class="add">+</button>
                 </div>
             </div>
+            <div class="doing-list">
+                <h2>Doing</h2>
+                <ul id="doing">
+                    <p class="placeholder">Drag and drop tasks here that are in progress!</p>
+                </ul>
+            </div>
             <div class="done-list">
                 <h2>Done</h2>
                 <ul id="done">
-                    <p class="placeholder"></p>
+                    <p class="placeholder">Drag and drop tasks here that are done!</p>
                 </ul>
             </div>
         </div>
@@ -48,7 +53,6 @@
             <button onclick="saveNote()" class="add-btn">+</button>
             <button onclick="deleteNote()" class="remove-btn">-</button>
         </div>
-
     </div>
 
     <script src="js/script.js"></script>
